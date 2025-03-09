@@ -6,7 +6,7 @@
       shell: docker stop python-app || true && docker rm python-app || true
 
     - name: Pull latest Docker image
-      shell: docker pull my-docker-repo/python-flask-app:latest
+      shell: docker pull sanjay2025/python-flask-app:latest
 
     - name: Run new container
-      shell: docker run -d -p 5000:5000 --name python-app my-docker-repo/python-flask-app:latest
+      shell: docker run -d -p 5000:5000 --name python-app sanjay2025/python-flask-app:latest
