@@ -2,26 +2,26 @@ pipeline {
     agent any
 
     environment {
-        GIT_BRANCH = 'main'  // Change this if using a different branch
+        GIT_BRANCH = 'main' 
     }
 
     stages {
         stage('Checkout') {
             steps {
-                git branch: "${GIT_BRANCH}", url: 'https://github.com/your-username/python-flask-app.git'
+                git branch: "${GIT_BRANCH}", url: 'https://github.com/Sanjaysaravanan20/Pyth.git'
             }
         }
 
         stage('Build Docker Image') {
             steps {
-                sh 'docker build -t my-docker-repo/python-flask-app:latest .'
+                sh 'docker build -t sanjay2025/python-flask-app:latest .'
             }
         }
 
         stage('Push to Docker Hub') {
             steps {
                 withDockerRegistry([credentialsId: 'docker-hub', url: '']) {
-                    sh 'docker push my-docker-repo/python-flask-app:latest'
+                    sh 'docker push sanjay2025/python-flask-app:latest'
                 }
             }
         }
