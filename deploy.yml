@@ -1,0 +1,12 @@
+- name: Deploy Python App
+  hosts: app_server
+  become: true
+  tasks:
+    - name: Stop existing container
+      shell: docker stop python-app || true && docker rm python-app || true
+
+    - name: Pull latest Docker image
+      shell: docker pull my-docker-repo/python-flask-app:latest
+
+    - name: Run new container
+      shell: docker run -d -p 5000:5000 --name python-app my-docker-repo/python-flask-app:latest
